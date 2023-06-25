@@ -1,0 +1,14 @@
+{% extends 'rezume/base.html' %}
+{% block content %}
+<h1>Обратная связь</h1>
+<p>Вы можете связаться со мной  по электронной почте<a href="mailto:vmit2005@yandex.ru">vmit2005@yandex.ru</a>. Или в форме обратной связи, тогда вам потребуется зарегистрироваться.</p>
+{% for feed in feeds %}
+<div class="element">
+    <h2 class="top">{{feed.title}}    </h2>
+    <div class="feed_text">
+        <h5>{{feed.date}}</h5>
+        <p>{{feed.description}}</p>
+    </div>
+
+</div>
+{% endfor %}
