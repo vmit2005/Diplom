@@ -28,8 +28,7 @@ urlpatterns = [
     path('programm/', views.programm, name = 'programm'),
     path('feedback/',include('feedback.urls')),
     path('infosistem/',include('infosistem.urls')),
-    #Вход в личный кабинет
-    path('signup/',views.signupuser, name='signupuser'),
+
 
 ]
 

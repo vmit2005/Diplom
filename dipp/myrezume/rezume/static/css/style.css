@@ -10,6 +10,17 @@ body{
     text-align: center;
     
 }
+form{
+    size:400px ;
+}
+li{
+    list-style-type: none;
+
+}
+.inp{
+   size: 100px;
+}
+textarea{size: 400px;}
 .column{
     display: flex;
     flex-direction: row;
@@ -73,7 +84,7 @@ text{
     font-size: 20px;
 }
 button{
-    border-radius: 25px;
+    border-radius: 12px;
     font-weight: bold;
     width: 150px;
     height:60px ;

@@ -1,14 +1,22 @@
 {% extends 'rezume/base.html' %}
 {% block content %}
-<h1>Обратная связь</h1>
-<p>Вы можете связаться со мной  по электронной почте<a href="mailto:vmit2005@yandex.ru">vmit2005@yandex.ru</a>. Или в форме обратной связи, тогда вам потребуется зарегистрироваться.</p>
-{% for feed in feeds %}
-<div class="element">
-    <h2 class="top">{{feed.title}}    </h2>
-    <div class="feed_text">
-        <h5>{{feed.date}}</h5>
-        <p>{{feed.description}}</p>
-    </div>
+<h2>Введите ваше сообщение</h2>
+<form action="" method="post">
+<ul>
+    <li>Тема сообщения <br> <input type="text" name="title" id="" class="inp" ></li>
+    <li>Автор <br> <input type="text" name="author" id=""  class="inp"  ></li>
 
-</div>
-{% endfor %}
+    <li>Ваше сообщение <br> <textarea name="description" id="" cols="60" rows="4"></textarea></li>
+    <li>Показывать всем <input type="checkbox" name="alles" id="" value="True" checked></li>
+    <li><input type="submit"  class="inp" ></li>
+
+
+
+
+
+
+
+
+</form>
+</ul>
+{% endblock %}

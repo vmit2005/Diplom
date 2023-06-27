@@ -17,5 +17,4 @@ def programm(request):
     projects = Proggg.objects.all()
     return render(request, 'rezume/programm.html', {'projects':projects})
 
-def signupuser(request):
-    return render(request, 'feedback/signupuser.html' )
+

@@ -34,13 +34,15 @@ def signupuser(request):
             except IntegrityError:
                 return render(request, 'feedback/signupuser.html', {
                     'form': UserCreationForm(),
-                    'error': 'Такое имя пользователя уже существует. Задайте другое'
+                    'error': 'Такое имя пользователя уже существует. Задайте другое или войдите'
                 })
         else:
             return render(request, 'feedback/signupuser.html', {
                 'form': UserCreationForm(),
                 'error': 'Пароли не совпадают'
             })
+
+
 def loginuser(request):
     if request.method == 'GET':
         return render(request, 'feedback/loginuser.html', {'form': AuthenticationForm()})
@@ -53,7 +55,7 @@ def loginuser(request):
             })
         else:
             login(request, user)
-            return redirect('feedback')
+            return redirect('newfeedback')
 
 
 @login_required

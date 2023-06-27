@@ -1,17 +1,22 @@
 {% extends 'rezume/base.html' %}
 {% block content %}
 <h1>Обратная связь</h1>
-<p>Вы можете связаться со мной  по электронной почте<a href="mailto:vmit2005@yandex.ru">vmit2005@yandex.ru</a>. Или в форме обратной связи, тогда вам потребуется <a href="{% url 'loginuser' %}">войти</a> или<a href="{% url 'signupuser' %}">Зарегистрироваться</a>
+<p>Вы можете связаться со мной  по электронной почте<a href="mailto:vmit2005@yandex.ru">vmit2005@yandex.ru</a>.
+    Или в форме обратной связи, тогда вам потребуется <a href="{% url 'loginuser' %}">войти</a> или <a href="{% url 'signupuser' %}">Зарегистрироваться</a>
 
 </p>
 {% for feed in feeds %}
 <div class="element">
+{% if  feed.alles %}
     <h2 class="top">{{feed.title}}    </h2>
+    <h4 class="author">{{feed.author}}    </h4>
     <div class="feed_text">
         <h5>{{feed.date}}</h5>
         <p>{{feed.description}}</p>
     </div>
-
+    {% else %}
+     <h4 class="author">Только для  {{feed.author}}    </h4>
+{% endif %}
 </div>
 {% endfor %}
 
