@@ -3,22 +3,40 @@ from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth.models import User
 from django.db import IntegrityError
 from django.contrib.auth import login, logout, authenticate
-# from .forms import Feedform
+from .forms import FeedbackForm
 from .models import Feedback
 from django.utils import timezone
 from django.contrib.auth.decorators import login_required
 
 
-
 def feedbacks(request):
-    feeds = Feedback.objects.order_by('-date')
-    return render(request, 'feedback/feedback.html', {'feeds':feeds})
+    feeds = Feedback.objects.order_by('title')
+    return render(request, 'feedback/feedback.html', {'feeds': feeds})
 
-def detail(request, feed_id):
-    return render(request,'feedback/details.html',{'id':feed_id})
 
-def new_feedback(request):
-    return render(request, 'feedback/newfeedback.html')
+# def detail(request, feed_id):
+#     return render(request, 'feedback/details.html', {'id': feed_id})
+#
+
+# def new_feedback(request):
+#     return render(request, 'feedback/newfeedback.html')
+
+
+def new_feedback2(request):
+    if request.method == 'POST':
+        form = FeedbackForm(request.POST)
+        if form.is_valid():
+            print(form.data)
+            form.save()
+            return redirect('feedback')
+        else:
+            error = 'Данные неверные'
+    form = FeedbackForm()
+    data = {
+        'form': form,
+        # 'error': error
+    }
+    return render(request, 'feedback/newfeedback2.html', data)
 
 
 def signupuser(request):

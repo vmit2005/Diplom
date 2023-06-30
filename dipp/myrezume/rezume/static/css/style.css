@@ -36,6 +36,20 @@ textarea{size: 400px;}
 .element img{
     width: 500px;
 }
+
+.element{
+    width: 80%;
+    align-items: center;
+}
+
+.form-control{
+    width: 70%;
+    margin: 10px;
+    padding:10px;
+    font-size: ;
+}
+
+
 h1{
     font-size: 32px;
     font-weight: bold;
@@ -83,7 +97,7 @@ text{
     list-style: none;
     font-size: 20px;
 }
-button{
+.button{
     border-radius: 12px;
     font-weight: bold;
     width: 150px;
