@@ -3,21 +3,20 @@
 <h1>Обратная связь</h1>
 <p>Вы можете связаться со мной  по электронной почте <a href="mailto:vmit2005@yandex.ru"> vmit2005@yandex.ru</a>
     
-    Или в <a href="{% url 'newfeedback2' %}"> форме обратной связи.</a> </p>
+    Или напишите мне  <a href="{% url 'newfeedback2' %}"> форме обратной связи.</a> </p>
 <!--    , тогда вам потребуется <a href="{% url 'loginuser' %}">войти</a> или <a href="{% url 'signupuser' %}">Зарегистрироваться</a>-->
 
 </p>
 {% for feed in feeds %}
 <div class="element">
 
-    <h2 class="top">{{feed.title}}  </h2>
-    <h4 class="author">{{feed.author}} </h4>
+    <h2 class="top">Тема: {{feed.title}}  </h2>
+
+    <h4 class="author">Автор: {{feed.author}}. E-mail: {{feed.mail}} </h4>
+
     <div class="feed_text">
-<!--        <h5>{{feed.date}}</h5>-->
         <p>{{feed.description}}</p>
     </div>
-
-<!--    <h4 class="author">Только для  {{feed.author}}    </h4>-->
 
 </div>
 {% endfor %}

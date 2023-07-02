@@ -4,16 +4,13 @@
 {% block content %}
 <h2>Введите ваше сообщение</h2>
 <form  method="post">
-    <span> {{error}}</span>
+    <h3> {{ error }}</h3>
     {% csrf_token %}
-    {{form.title}}<br>
-    {{form.author}}<br>
-    {{form.description}}<br>
-
-
-<input type="submit"  class="button">
-
-
-
+    {{form.as_p}}
+<!--    {{form.title}}<br>-->
+<!--    {{form.author}}-->
+<!--    {{form.mail}}<br>-->
+<!--    {{form.description}}<br>-->
+   <input type="submit"  class="button">
 </form>
 {% endblock %}

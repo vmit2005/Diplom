@@ -26,7 +26,6 @@ class Arbeit(models.Model):
     dr_spec = models.FileField(upload_to='arbeit/media/', blank=True, verbose_name='Спецификация')
     dr_model = models.FileField(upload_to='arbeit/media/', blank=True, verbose_name='Модель')
 
-
     def __str__(self):
         return self.title
 
@@ -35,8 +34,6 @@ class Proggg(models.Model):
     title = models.CharField(max_length=100,verbose_name='Название')
     description = models.TextField(max_length=500, verbose_name='Описание программы' )
     url = models.URLField(blank=True, verbose_name='Ссылка')
-
-
 
     def __str__(self):
         return self.title

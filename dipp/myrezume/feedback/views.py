@@ -5,6 +5,7 @@ from django.db import IntegrityError
 from django.contrib.auth import login, logout, authenticate
 from .forms import FeedbackForm
 from .models import Feedback
+
 from django.utils import timezone
 from django.contrib.auth.decorators import login_required
 
@@ -21,21 +22,35 @@ def feedbacks(request):
 # def new_feedback(request):
 #     return render(request, 'feedback/newfeedback.html')
 
-
+@login_required
 def new_feedback2(request):
-    if request.method == 'POST':
-        form = FeedbackForm(request.POST)
-        if form.is_valid():
-            print(form.data)
-            form.save()
-            return redirect('feedback')
-        else:
-            error = 'Данные неверные'
-    form = FeedbackForm()
-    data = {
-        'form': form,
-        # 'error': error
-    }
+    global   user
+    user=request.user
+
+    print ('USR', user)
+    if request.user.is_authenticated:
+
+        print(request.user)
+        if request.method == 'POST':
+            form = FeedbackForm(request.POST )
+            if form.is_valid():
+                print( "1111",form.data)
+                print(form.data['title'])
+                print(request.user.is_authenticated)
+                print(request.user)
+                print("author",form.data['author'])
+                form.data['author'] = 'aaa'
+                form.save()
+                return redirect('feedback')
+            else:
+
+                error : "Данные неверны"
+
+        form = FeedbackForm(initial={'value':'bbb'})
+        data = {
+            'form': form,
+            # 'error': error
+            }
     return render(request, 'feedback/newfeedback2.html', data)
 
 
@@ -69,11 +84,11 @@ def loginuser(request):
         if user is None:
             return render(request, 'feedback/loginuser.html', {
                 'form': AuthenticationForm(),
-                'error': 'Неверные данные для входа'
+                # 'error': 'Неверные данные для входа'
             })
         else:
             login(request, user)
-            return redirect('newfeedback')
+            return redirect('newfeedback2')
 
 
 @login_required

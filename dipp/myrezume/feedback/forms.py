@@ -5,7 +5,8 @@ from .models import Feedback
 class FeedbackForm(ModelForm):
     class Meta:
         model = Feedback
-        fields = ['title','author','description']
+        fields = ['title','author', 'mail', 'description']
+
 
         widgets={
             "title":TextInput(attrs={
@@ -13,8 +14,15 @@ class FeedbackForm(ModelForm):
                                'placeholder':'Тема'
                               }),
             "author": TextInput(attrs={
-                'class': "form-control",
-                'placeholder':'Автор'
+                'class': "form-control2",
+                'placeholder': 'Автор'
+
+            }),
+
+            "mail": TextInput(attrs={
+                'class': "form-control2",
+                'placeholder': 'e-mail'
+
             }),
             "description": Textarea(attrs={
                 'class': "form-control",
