@@ -41,6 +41,13 @@ textarea{size: 400px;}
     width: 80%;
     align-items: center;
     align-self: center;
+    background-color: #d3e3d1;
+    margin: 5% 10%;
+}
+.element2{
+    width: 80%;
+    align-items: center;
+    align-self: center;
     background-color: rgb(240, 240, 240);
     margin: 5% 10%;
 }
@@ -50,12 +57,14 @@ textarea{size: 400px;}
     margin: 10px;
     padding:10px;
     font-size:18px ;
+    border:#a3cb9e solid  3px;
 }
 .form-control2{
     width: 33%;
     margin: 10px;
     padding:10px;
     font-size:18px ;
+    border:#a3cb9e solid  3px;
 }
 
 
@@ -115,5 +124,33 @@ text{
     text-align: center;
     font-size: 18px;
     font-family: 'Times New Roman', Times, serif;
-    margin: 3px;
+    margin: 3px; 
+    border:#73a06d solid  2px;
+ 
+    
 }
+
+.button a{
+    text-decoration: none;
+    display: block;
+}
+
+.step-links button{
+    border-radius: 6px;
+    font-weight: bold;
+    width: 60px;
+    height:40px ;
+    text-align: center;
+    font-size: 18px;
+    font-family: 'Times New Roman', Times, serif;
+    margin: 4px;
+    background: #a3cb9e;
+    border:#6da266 solid  2px;
+}
+
+ .step-links a{
+    text-decoration: none;
+    font-size: 18px;
+    font-family: 'Times New Roman', Times, serif;
+    
+ }

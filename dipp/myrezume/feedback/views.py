@@ -5,14 +5,25 @@ from django.db import IntegrityError
 from django.contrib.auth import login, logout, authenticate
 from .forms import FeedbackForm
 from .models import Feedback
+from django.core.paginator import Paginator
 
 from django.utils import timezone
 from django.contrib.auth.decorators import login_required
+from telebot.models import Telesettings
+from sendmessage import send_telegram
+from re import findall
+
+
+
 
 
 def feedbacks(request):
-    feeds = Feedback.objects.order_by('title')
-    return render(request, 'feedback/feedback.html', {'feeds': feeds})
+    feeds = Feedback.objects.order_by('id')
+    p = Paginator(feeds, 4)
+    page_number = request.GET.get('page')
+    page_obj = p.get_page(page_number)
+
+    return render(request, 'feedback/feedback.html', {'page_obj': page_obj})
 
 
 # def detail(request, feed_id):
@@ -24,33 +35,31 @@ def feedbacks(request):
 
 @login_required
 def new_feedback2(request):
-    global   user
-    user=request.user
+    global user
+    user = request.user
 
-    print ('USR', user)
+    print('USR', user)
     if request.user.is_authenticated:
 
         print(request.user)
         if request.method == 'POST':
-            form = FeedbackForm(request.POST )
+            form = FeedbackForm(request.POST)
+
             if form.is_valid():
-                print( "1111",form.data)
-                print(form.data['title'])
-                print(request.user.is_authenticated)
-                print(request.user)
-                print("author",form.data['author'])
-                form.data['author'] = 'aaa'
                 form.save()
+                print(form.data, type(form))
+                # ff = form_sort(form)
+                send_telegram(tg_title=form.data['title'], tg_author=form.data['author'],tg_mail=form.data['mail'],tg_description=form.data['description'])
                 return redirect('feedback')
             else:
 
-                error : "Данные неверны"
+                error: "Данные неверны"
 
-        form = FeedbackForm(initial={'value':'bbb'})
+        form = FeedbackForm(initial={'value': 'bbb'})
         data = {
             'form': form,
             # 'error': error
-            }
+        }
     return render(request, 'feedback/newfeedback2.html', data)
 
 
